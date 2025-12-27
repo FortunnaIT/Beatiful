@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .detail-hero {
+        width: 100%;
+        background: #fbf4ef;
+        padding: 100px 0;
+    }
+
+    .detail-wrapper {
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        padding: 0 40px;
+    }
+
+    .detail-left {
+        flex: 1;
+    }
+
+    .detail-left h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 64px;
+        font-weight: 400;
+        margin-bottom: 15px;
+        color: #111;
+    }
+
+    .detail-left p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #444;
+        max-width: 420px;
+        margin-bottom: 30px;
+    }
+
+    .detail-price {
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 35px;
+        color: #000;
+    }
+
+    .detail-btn {
+        display: inline-block;
+        padding: 14px 40px;
+        background-color: #111;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        transition: 0.2s ease;
+    }
+
+    .detail-btn:hover {
+        opacity: 0.85;
+    }
+
+    .detail-right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail-right img {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 900px) {
+        .detail-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .detail-left p {
+            margin: auto auto 30px;
+        }
+    }
+</style>
+
+<section class="detail-hero">
+    <div class="detail-wrapper">
+
+        <!-- LEFT TEXT -->
+        <div class="detail-left">
+            <h1>{{ p.name }}</h1>
+            <p>{{ p.text }}</p>
+
+            <div class="detail-price">
+                {{ p.narx }} so‘m
+            </div>
+
+            <a href="#" class="detail-btn">BUY NOW</a>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="detail-right">
+            <img src="{{ p.img.url }}" alt="{{ p.name }}">
+        </div>
+
+    </div>
+</section>
+{% endblock %}
