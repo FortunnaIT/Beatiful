@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form action="" method="post" enctype="mutipart/from-data"> {% csrf_token %}
+    <button type="submit">Ha</button>
+</form>
+<a href="{% url 'index'%}">Yoq</a>
+
+
+
+{% endblock content %}

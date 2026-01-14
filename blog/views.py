@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Haqda,Mahsulot,Reklama
 from user.models import Coment
+from django.views.generic import CreateView,UpdateView,DeleteView
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     title = "Beoutifil"
@@ -41,12 +43,29 @@ def contact(request):
     }
     return render(request,'contact.html',context=malumot)
 
-
+@login_required
 def detail(request,id):
     title = "Detail"
     mahsulot = Mahsulot.objects.get(id=id)
     malumot = {
         "title":title,
-        'p':mahsulot
+        'p':mahsulot,
     }
     return render(request,'detail.html',context=malumot)
+class MahsulotCreate(CreateView):
+    model = Mahsulot
+    template_name = 'crud/create.html'
+    success_url = '/'
+    fields = ['neme','text','img','narx']
+
+class MahsulotUpdate(UpdateView):
+    model = Mahsulot
+    template_name = 'crud/update.html'
+    success_url = '/'
+    fields = ['neme','text','img','narx']
+
+class MahsulotDelete(DeleteView):
+    model = Mahsulot
+    template_name = 'crud/delete.html'
+    success_url = '/'
+    fields = ['name','text','img','narx']

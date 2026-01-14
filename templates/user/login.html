@@ -1,0 +1,60 @@
+ {% extends 'base.html' %}
+{% block content %}
+
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+
+                    <h2 class="text-center fw-bold mb-3">
+                        🔐 Tizimga kirish
+                    </h2>
+                    <p class="text-center text-muted mb-4">
+                        Hisobingizga kiring
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    {{ field.label }}
+                                </label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger small">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <a href="{% url 'password_reset' %}">Forget password</a>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-dark btn-lg rounded-pill">
+                                Kirish
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <p class="text-center mt-3 text-muted">
+                © Beautiflie
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    input {
+        border-radius: 12px !important;
+        padding: 10px !important;
+    }
+</style>
+
+{% endblock content %}

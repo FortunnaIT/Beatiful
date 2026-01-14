@@ -98,9 +98,10 @@
                 {{ p.narx }} so‘m
             </div>
 
-            <a href="#" class="detail-btn">BUY NOW</a>
-        </div>
+            <a href="{% url 'update' p.id %}" class="detail-btn">Ozgartirish</a>
+            <a href="{% url 'delete' p.id %}" class="detail-btn">Ochirish</a>
 
+        </div>
         <!-- RIGHT IMAGE -->
         <div class="detail-right">
             <img src="{{ p.img.url }}" alt="{{ p.name }}">
